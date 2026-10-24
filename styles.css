@@ -1,0 +1,554 @@
+/* Olvayo legal and support site. Colors follow the app's asset catalog. */
+
+:root {
+  --bg: #f4f5f1;          /* ScreenBackground */
+  --surface: #ffffff;     /* CardBackground */
+  --text: #161a12;
+  --muted: #5d6458;
+  --line: #e3e6dd;
+  --accent: #4d7c0f;      /* AccentColor: lime text */
+  --lime: #a3e635;        /* Lime: fills */
+  --on-lime: #0b1400;     /* OnLime: text on lime */
+  --soft: #ecfccb;        /* LimeSoft */
+  --max: 860px;
+  --r: 20px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 6px 20px rgba(0, 0, 0, 0.04);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0c0a;
+    --surface: #1a1c18;
+    --text: #f1f3ee;
+    --muted: #a2a99c;
+    --line: #2b2e27;
+    --accent: #a3e635;
+    --lime: #b5f04a;
+    --soft: #26350e;
+    --shadow: none;
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Language: both show without JavaScript; site.js sets data-lang and hides the other. */
+html[data-lang="en"] [data-l="tr"],
+html[data-lang="tr"] [data-l="en"] {
+  display: none !important;
+}
+
+/* ── Layout ───────────────────────────────────────── */
+
+.inner,
+main,
+footer {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+main {
+  padding-top: 32px;
+  padding-bottom: 64px;
+}
+
+/* ── Header ───────────────────────────────────────── */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+header .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand img {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+}
+
+.header-end {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+nav {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 11px;
+  border-radius: 999px;
+  transition: background 0.15s, color 0.15s;
+}
+
+nav a:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+nav a.active {
+  color: var(--on-lime);
+  background: var(--lime);
+  font-weight: 600;
+}
+
+.lang-switch {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px;
+  background: var(--surface);
+}
+
+.lang-switch button {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-radius: 999px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.lang-switch button[aria-pressed="true"] {
+  color: var(--text);
+  background: var(--soft);
+}
+
+/* ── Cards ────────────────────────────────────────── */
+
+.hero,
+.section {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 28px 32px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+
+.hero-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 20px rgba(111, 174, 18, 0.25);
+}
+
+/* ── Typography ───────────────────────────────────── */
+
+h1 {
+  font-size: clamp(28px, 5vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 28px 0 8px;
+}
+
+/* The first heading of a card; the English and Turkish headings sit side by side, or after the tag. */
+.section > h2:nth-child(-n+2) {
+  margin-top: 8px;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: 650;
+  margin: 18px 0 6px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+li {
+  margin: 4px 0;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 2px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+.meta {
+  display: flex;
+  gap: 4px 18px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+/* Labels the English and Turkish halves when both show, that is without JavaScript. */
+html[data-lang] .tag {
+  display: none;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--soft);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+
+.notice {
+  background: var(--soft);
+  border-left: 3px solid var(--lime);
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  margin: 16px 0;
+}
+
+.notice:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Document cards (home) ────────────────────────── */
+
+.doc-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.doc-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.doc-card:hover {
+  border-color: var(--lime);
+  background: var(--soft);
+}
+
+.doc-card-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--lime);
+  color: var(--on-lime);
+}
+
+.doc-card-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.doc-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.doc-card-text strong {
+  display: block;
+  font-size: 15px;
+}
+
+.doc-card-text > span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.doc-card-arrow {
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ── Support form ─────────────────────────────────── */
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--lime);
+}
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--on-lime);
+  background: var(--lime);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+.form-note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+/* ── FAQ ──────────────────────────────────────────── */
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.faq details {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  font-size: 18px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.faq details[open] summary {
+  background: var(--soft);
+}
+
+.faq details[open] summary::after {
+  content: "−";
+}
+
+.faq-answer {
+  padding: 12px 16px 14px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ── Footer ───────────────────────────────────────── */
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 32px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--accent);
+}
+
+.footer-links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ── Small screens ────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .inner,
+  main,
+  footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  main {
+    padding-top: 20px;
+  }
+
+  /* Two rows: brand and language on top, pages below. Not sticky, so long pages keep the screen. */
+  header {
+    position: static;
+  }
+
+  .header-end {
+    display: contents;
+  }
+
+  .lang-switch {
+    order: 1;
+  }
+
+  nav {
+    order: 2;
+    width: 100%;
+  }
+
+  .hero,
+  .section {
+    padding: 22px 18px;
+  }
+
+  nav a {
+    font-size: 13px;
+    padding: 5px 9px;
+  }
+}
+
+@media print {
+  header,
+  footer {
+    display: none;
+  }
+
+  .hero,
+  .section {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
